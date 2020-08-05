@@ -64,7 +64,7 @@ When the sequence id reach the max (default is Number.MAX_DAFE_INTEGER = 9007199
 $ curl -i localhost:3000
 HTTP/1.1 200 OK
 X-Powered-By: Express
-request-id: redrock/**4f1704658fdd4d797c833563**-9007199254740991
+request-id: redrock/4f1704658fdd4d797c833563-9007199254740991
 
 $ curl -i localhost:3000
 HTTP/1.1 200 OK
