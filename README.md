@@ -19,7 +19,9 @@ The request id will be composed of the three parts. The first two will form the 
 
 Theese parts will be composed in the form of _hostname_**/**_unique_part_**-**_sequenceid_
 
-As an example, a reuest id might be something like this: _**redrock/4f1704658fdd4d797c833563-0000000000000001**_
+As an example, a reuest id might be something like this: _**redrock/4f1704658fdd4d797c833563-0000000000000001**_.
+
+The prefix separator "/" and the sequence id separator "-" can be configured specifing params to the express-requid initialization.
 
 #### Sample usage
 ```js
