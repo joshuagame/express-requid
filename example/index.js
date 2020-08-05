@@ -7,9 +7,7 @@ const app = express();
 app.use(requid());
 
 app.get('/', function (req, res, next) {
-    res.json({
-        requestId: req.rid
-    });
+    return res.sendStatus(200);
 });
 
 const server =

@@ -34,23 +34,34 @@ const server =
 
 To test the sample:
 ```bash
-$ curl localhost:3000
-{"requestId":"redrock/4f1704658fdd4d797c833563-0000000000000001"}
+$ curl -i localhost:3000
+HTTP/1.1 200 OK
+X-Powered-By: Express
+request-id: redrock/4f1704658fdd4d797c833563-0000000000000001
 
-$curl localhost:3000
-{"requestId":"redrock/4f1704658fdd4d797c833563-0000000000000002"}
+$ curl -i localhost:3000
+HTTP/1.1 200 OK
+X-Powered-By: Express
+request-id: redrock/4f1704658fdd4d797c833563-0000000000000002
 
 ...
 ...
-$curl localhost:3000
-{"requestId":"redrock/4f1704658fdd4d797c833563-0000000000002491"}
+$ curl -i localhost:3000
+HTTP/1.1 200 OK
+X-Powered-By: Express
+request-id: redrock/4f1704658fdd4d797c833563-0000000000002491
 ```
 
 When the sequence id reach the max (default is Number.MAX_DAFE_INTEGER = 9007199254740991 on a 64bit machine), the unique part of the prefix will be regenerated and the sequence restart from 0 (so the first id will be ...00001).
 ```bash
-$curl localhost:3000
-{"requestId":"redrock/4f1704658fdd4d797c833563-9007199254740991"}
-$curl localhost:3000
-{"requestId":"redrock/dafbb8dd5eb2193ee436e8b4-0000000000000001"}
+$ curl -i localhost:3000
+HTTP/1.1 200 OK
+X-Powered-By: Express
+request-id: redrock/4f1704658fdd4d797c833563-9007199254740991
+
+$ curl -i localhost:3000
+HTTP/1.1 200 OK
+X-Powered-By: Express
+request-id: redrock/dafbb8dd5eb2193ee436e8b4-0000000000000001
 
 ```
