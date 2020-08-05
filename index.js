@@ -29,6 +29,7 @@ app.get('/', function (req, res, next) {
 const server =
     app.listen(3000, '0.0.0.0')
         .on('listening', () => {
+            console.log(Number.MAX_SAFE_INTEGER);
             console.log(`server listening on ${server.address().address}:${server.address().port}`);
         })
         .on('error', (err) => {
