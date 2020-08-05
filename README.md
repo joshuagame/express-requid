@@ -24,5 +24,13 @@ app.listen(3000, () => {
 To test the sample:
 ```bash
 $ curl localhost:3000
-{"requestId":"redrock/8aa8fcf4a0af9d153f1f0772-0000000000000001"}
+{"requestId":"redrock/4f1704658fdd4d797c833563-0000000000000001"}
+
+$curl localhost:3000
+{"requestId":"redrock/4f1704658fdd4d797c833563-0000000000000002"}
+
+...
+...
+$curl localhost:3000
+{"requestId":"redrock/4f1704658fdd4d797c833563-0000000000002491"}
 ```
