@@ -1,0 +1,36 @@
+{
+  "name": "express-requid",
+  "version": "1.0.0",
+  "description": "Express.js request id middleware",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshuagame/express-requid.git"
+  },
+  "keywords": [
+    "express",
+    "express.js",
+    "middleware",
+    "request-id",
+    "request",
+    "id",
+    "uid"
+  ],
+  "author": "Luca Stasio <joshuagame@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshuagame/express-requid/issues"
+  },
+  "homepage": "https://github.com/joshuagame/express-requid#readme",
+  "devDependencies": {
+    "bluebird": "^3.7.2",
+    "jest": "^26.2.2",
+    "supertest": "^4.0.2"
+  },
+  "dependencies": {
+    "crypto": "^1.0.1"
+  }
+}
