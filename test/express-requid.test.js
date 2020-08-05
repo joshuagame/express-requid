@@ -18,7 +18,7 @@ const supertest = require('supertest');
 const express = require('express');
 const os = require('os');
 
-describe('Request ID in requests', function () {
+describe('request id generation', function () {
 
     it('should have "rid" as request attribute', async function (done) {
         const app = express();
@@ -116,4 +116,55 @@ describe('Request ID in requests', function () {
 
         done();
     });
+});
+
+describe('request id generation', function () {
+
+    it('should recive "request-id" header and req.rid === header value', async function (done) {
+        const headerName = 'request-id';
+        const headerValue = 'fake-request-id';
+        const app = express();
+        app.use(requid());
+        app.get('/', function (req, res) {
+            expect(req).exists;
+            expect(req.headers).toHaveProperty(headerName);
+            expect(req.header(headerName)).toBe(headerValue);
+            expect(req.rid).exists;
+            expect(req.rid).toBe(headerValue);
+            res.send('it works');
+        });
+
+        await supertest(app).get('/').set(headerName, headerValue).expect(200);
+        done();
+    });
+
+    it('should reset id prefix (idMax = 2)', function (done) {
+        const headerName = 'request-id';
+        const headerValue = 'fake-request-id';
+        const app = express();
+        const agent = supertest(app);
+        app.use(requid({ idMax: 2 }));
+        app.get('/', function (req, res) {
+            expect(req).exists;
+            console.log(`rid: ${req.rid}`);
+            res.send('it works');
+        });
+
+        agent
+            .get('/')
+            .end(function () {
+                agent
+                    .get('/')
+                    .expect(200)
+                    .end(function () {
+                        agent
+                            .get('/')
+                            .expect(200)
+                            .end(function (err, res) {
+                                done();
+                            })
+                    })
+            });
+    });
+
 });

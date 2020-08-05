@@ -4,8 +4,7 @@
   "description": "Express.js request id middleware",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose",
-    "coverage": "jest --coverage"
+    "test": "jest --verbose --coverage"
   },
   "repository": {
     "type": "git",
