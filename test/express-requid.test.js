@@ -1,15 +1,14 @@
 /*!
  * express-requid
+ * Express.js request id middleware
  *
- * Copyright(c) 2020 The express-requid authors.
+ * Copyright(c) 2020 Luca Stasio <joshuagame@gmail.com>
+ *
  * Use of this source code is governed by a MIT license.
  * You can find the MIT license term for this source code
  * in the LICENSE file.
  *
  * test/express-requid.test.js
- *
- * Authors:
- *   Luca Stasio <joshuagame@gmail.com>
  */
 
 Promise = require('bluebird');
@@ -53,7 +52,6 @@ describe('request id generation', function () {
         app.use(requid());
         app.get('/', function (req, res) {
             expect(req).exists;
-            // this is the third test request, so the rid must end with ..000..003
             expect(req.rid).toMatch(/.*00001.?$/i);
             res.send('it works');
         });
