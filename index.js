@@ -5,7 +5,7 @@
  * Copyright(c) 2020 Luca Stasio <joshuagame@gmail.com>
  *
  * Use of this source code is governed by a MIT license.
- * You can find the MIT license term for this source code
+ * You can find the MIT license terms for this source code
  * in the LICENSE file.
  *
  * index.js
