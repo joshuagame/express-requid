@@ -23,18 +23,15 @@ The prefix separator "/" and the sequence id separator "-" can be configured.
 
 #### Sample usage
 ```js
-Promise = require('bluebird');
 const express = require('express');
-const requid = require('./lib/express-requid');
+const requid = require('express-requid');
 
 const app = express();
 
 app.use(requid());
 
 app.get('/', function (req, res, next) {
-    res.json({
-        requestId: req.rid
-    });
+    return res.sendStatus(200);
 });
 
 const server =
