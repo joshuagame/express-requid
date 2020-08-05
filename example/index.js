@@ -1,6 +1,5 @@
-Promise = require('bluebird');
 const express = require('express');
-const requid = require('../lib/express-requid');
+const requid = require('../index').requidAsync;
 
 const app = express();
 

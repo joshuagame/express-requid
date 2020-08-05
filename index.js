@@ -11,4 +11,7 @@
  * index.js
  */
 
-module.exports = require('./lib/express-requid');
+module.exports = {
+    requidAsync: require('./lib/express-requidAsync'),
+    requid: require('./lib/express-requid')
+}
