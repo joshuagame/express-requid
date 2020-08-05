@@ -118,7 +118,7 @@ describe('request id generation', function () {
     });
 });
 
-describe('request id generation', function () {
+describe('request id in header and prefix reset', function () {
 
     it('should recive "request-id" header and req.rid === header value', async function (done) {
         const headerName = 'request-id';
@@ -138,33 +138,40 @@ describe('request id generation', function () {
         done();
     });
 
-    it('should reset id prefix (idMax = 2)', function (done) {
-        const headerName = 'request-id';
-        const headerValue = 'fake-request-id';
+    it('should reset id prefix (idMax = 2)', async function (done) {
+        const prefixUniquePart = (rid) => {
+            return rid.substring(
+                rid.lastIndexOf("/") + 1,
+                rid.lastIndexOf("-")
+            );
+        }
+
         const app = express();
         const agent = supertest(app);
         app.use(requid({ idMax: 2 }));
         app.get('/', function (req, res) {
             expect(req).exists;
-            console.log(`rid: ${req.rid}`);
             res.send('it works');
         });
 
-        agent
-            .get('/')
-            .end(function () {
-                agent
-                    .get('/')
-                    .expect(200)
-                    .end(function () {
-                        agent
-                            .get('/')
-                            .expect(200)
-                            .end(function (err, res) {
-                                done();
-                            })
-                    })
-            });
+        // first call --> rid: host/xxxxxxxxxx-1
+        const res1 = await agent.get('/').expect(200);
+        const rid1 = res1.header['request-id'];
+
+        // second call --> rid: host/xxxxxxxxxx-2
+        const res2 = await agent.get('/').expect(200);
+        const rid2 = res2.header['request-id'];
+
+        // third call, (maxId(=2) === seqId) => prefix reset so --> rid: host/yyyyyyyyy-1
+        const res3 = await agent.get('/').expect(200);
+        const rid3 = res3.header['request-id'];
+
+        // expect "xxxxxxxxxx" === "xxxxxxxxxx"
+        expect(prefixUniquePart(rid1)).toBe(prefixUniquePart(rid2));
+
+        // expect "xxxxxxxxxx" !== "yyyyyyyyy"
+        expect(prefixUniquePart(rid1)).not.toBe(prefixUniquePart(rid3));
+        done();
     });
 
 });
