@@ -1,5 +1,5 @@
 const express = require('express');
-const requid = require('../index').requidAsync;
+const requid = require('../index');
 
 const app = express();
 

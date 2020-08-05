@@ -27,7 +27,6 @@
   },
   "homepage": "https://github.com/joshuagame/express-requid#readme",
   "devDependencies": {
-    "bluebird": "^3.7.2",
     "express": "^4.17.1",
     "jest": "^26.2.2",
     "supertest": "^4.0.2"

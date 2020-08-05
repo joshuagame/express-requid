@@ -11,7 +11,6 @@
  * test/express-requid.test.js
  */
 
-Promise = require('bluebird');
 const requid = require('../lib/express-requid');
 const supertest = require('supertest');
 const express = require('express');

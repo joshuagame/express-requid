@@ -4,8 +4,6 @@ An Express.js middleware to generate unique id for incoming requests. The genera
 
 In case a request has the _request-id_ header valued, then the middleware will use it (header name can be configured).
 
-Promise is required in order to 'promisify' crypto functionalities.
-
 #### Install
 ```bash
 npm install express-requid
