@@ -6,6 +6,12 @@ In case a request has the request id header header valued, then the middleware w
 
 Promise is required in order to 'promisify' crypto functionalities.
 
+### Install
+```bash
+npm install express-requid
+```
+
+### Sample usage
 ```js
 Promise = require('bluebird');
 const express = require('express');
@@ -52,6 +58,7 @@ X-Powered-By: Express
 request-id: redrock/4f1704658fdd4d797c833563-0000000000002491
 ```
 
+### Max id and unique part regeneration
 When the sequence id reach the max (default is Number.MAX_DAFE_INTEGER = 9007199254740991 on a 64bit machine), the unique part of the prefix will be regenerated and the sequence restart from 0 (so the first id will be ...00001).
 ```bash
 $ curl -i localhost:3000
