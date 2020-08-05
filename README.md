@@ -2,7 +2,7 @@
 
 An Express.js middleware to generate unique id for incoming requests. The generated id will have a prefix and a sequence number.
 
-In case a request has the request id header header valued, then the middleware will use it.
+In case a request has the _request-id_ header valued, then the middleware will use it (header name can be configured).
 
 Promise is required in order to 'promisify' crypto functionalities.
 
@@ -21,7 +21,7 @@ Theese parts will be composed in the form of _hostname_**/**_unique_part_**-**_s
 
 As an example, a reuest id might be something like this: _**redrock/4f1704658fdd4d797c833563-0000000000000001**_.
 
-The prefix separator "/" and the sequence id separator "-" can be configured specifing params to the express-requid initialization.
+The prefix separator "/" and the sequence id separator "-" can be configured.
 
 #### Sample usage
 ```js
