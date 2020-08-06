@@ -1,5 +1,6 @@
 const express = require('express');
 const requid = require('../index');
+const os = require('os');
 
 const app = express();
 
